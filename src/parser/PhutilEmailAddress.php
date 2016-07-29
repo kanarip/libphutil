@@ -24,6 +24,10 @@ final class PhutilEmailAddress extends Phobject {
         $local_part = $matches[2];
         $domain_name = null;
       }
+    } else if (preg_match('/^(.*)@(.*)\s\((.*)\)$/', $email_address, $matches)) {
+      $display_name = $matches[3];
+      $local_part = $matches[1];
+      $domain_name = $matches[2];
     } else if (preg_match('/^(.*)@(.*)$/', $email_address, $matches)) {
       $display_name = null;
       $local_part = $matches[1];

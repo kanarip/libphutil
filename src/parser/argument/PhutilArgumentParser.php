@@ -467,12 +467,9 @@ final class PhutilArgumentParser extends Phobject {
    *
    *    --trace             Enable service call tracing.
    *    --no-ansi           Disable ANSI color/style sequences.
-   *    --xprofile <file>   Write out an XHProf profile.
    *    --help              Show help.
    *
    * @return this
-   *
-   * @phutil-external-symbol function xhprof_enable
    */
   public function parseStandardArguments() {
     try {
@@ -545,17 +542,6 @@ final class PhutilArgumentParser extends Phobject {
 
     if ($this->getArg('help')) {
       $this->showHelp = true;
-    }
-
-    $xprofile = $this->getArg('xprofile');
-    if ($xprofile) {
-      if (!function_exists('xhprof_enable')) {
-        throw new Exception(
-          pht("To use '%s', you must install XHProf.", '--xprofile'));
-      }
-
-      xhprof_enable(0);
-      register_shutdown_function(array($this, 'shutdownProfiler'));
     }
 
     $recon = $this->getArg('recon');
@@ -876,15 +862,6 @@ final class PhutilArgumentParser extends Phobject {
     $args = array_slice($args, 1);
     $text = call_user_func_array(array($this, 'format'), $args);
     return phutil_console_wrap($text, $level);
-  }
-
-  /**
-   * @phutil-external-symbol function xhprof_disable
-   */
-  public function shutdownProfiler() {
-    $data = xhprof_disable();
-    $data = json_encode($data);
-    Filesystem::writeFile($this->getArg('xprofile'), $data);
   }
 
   public static function isTraceModeEnabled() {

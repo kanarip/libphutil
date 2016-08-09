@@ -19507,34 +19507,6 @@
       "php.min": "4.3.0",
       "php.max": null
     },
-    "xhprof_disable": {
-      "ext.name": "xhprof",
-      "ext.min": "0.9.0",
-      "ext.max": null,
-      "php.min": "5.2.0",
-      "php.max": null
-    },
-    "xhprof_enable": {
-      "ext.name": "xhprof",
-      "ext.min": "0.9.0",
-      "ext.max": null,
-      "php.min": "5.2.0",
-      "php.max": null
-    },
-    "xhprof_sample_disable": {
-      "ext.name": "xhprof",
-      "ext.min": "0.9.0",
-      "ext.max": null,
-      "php.min": "5.2.0",
-      "php.max": null
-    },
-    "xhprof_sample_enable": {
-      "ext.name": "xhprof",
-      "ext.min": "0.9.0",
-      "ext.max": null,
-      "php.min": "5.2.0",
-      "php.max": null
-    },
     "xml_error_string": {
       "ext.name": "xml",
       "ext.min": "4.0.0",
@@ -45194,27 +45166,6 @@
       "ext.min": "2.3.0",
       "ext.max": null,
       "php.min": "5.4.0",
-      "php.max": null
-    },
-    "XHPROF_FLAGS_CPU": {
-      "ext.name": "xhprof",
-      "ext.min": "0.9.0",
-      "ext.max": null,
-      "php.min": "5.2.0",
-      "php.max": null
-    },
-    "XHPROF_FLAGS_MEMORY": {
-      "ext.name": "xhprof",
-      "ext.min": "0.9.0",
-      "ext.max": null,
-      "php.min": "5.2.0",
-      "php.max": null
-    },
-    "XHPROF_FLAGS_NO_BUILTINS": {
-      "ext.name": "xhprof",
-      "ext.min": "0.9.0",
-      "ext.max": null,
-      "php.min": "5.2.0",
       "php.max": null
     },
     "XML_ATTRIBUTE_CDATA": {

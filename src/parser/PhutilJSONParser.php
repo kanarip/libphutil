@@ -3,8 +3,8 @@
 /**
  * A JSON parser.
  *
- * @phutil-external-symbol class JsonLintJsonParser
- * @phutil-external-symbol class JsonLintParsingException
+ * @phutil-external-symbol class Seld\JsonLint\JsonParser
+ * @phutil-external-symbol class Seld\JsonLint\ParsingException
  */
 final class PhutilJSONParser extends Phobject {
 
@@ -16,16 +16,12 @@ final class PhutilJSONParser extends Phobject {
   }
 
   public function parse($json) {
-    $jsonlint_root = phutil_get_library_root('phutil').'/../externals/jsonlint';
-    require_once $jsonlint_root.'/src/Seld/JsonLint/JsonParser.php';
-    require_once $jsonlint_root.'/src/Seld/JsonLint/Lexer.php';
-    require_once $jsonlint_root.'/src/Seld/JsonLint/ParsingException.php';
-    require_once $jsonlint_root.'/src/Seld/JsonLint/Undefined.php';
+    require_once 'Seld/JsonLint/autoload.php';
 
-    $parser = new JsonLintJsonParser();
+    $parser = new Seld\JsonLint\JsonParser();
     try {
       $output = $parser->parse($json, $this->getFlags());
-    } catch (JsonLintParsingException $ex) {
+    } catch (Seld\JsonLint\ParsingException $ex) {
       $details = $ex->getDetails();
       $message = preg_replace("/^Parse error .*\\^\n/s", '', $ex->getMessage());
 
@@ -48,12 +44,12 @@ final class PhutilJSONParser extends Phobject {
   }
 
   private function getFlags() {
-    $flags = JsonLintJsonParser::PARSE_TO_ASSOC;
+    $flags = Seld\JsonLint\JsonParser::PARSE_TO_ASSOC;
 
     if ($this->allowDuplicateKeys) {
-      $flags |= JsonLintJsonParser::ALLOW_DUPLICATE_KEYS;
+      $flags |= Seld\JsonLint\JsonParser::ALLOW_DUPLICATE_KEYS;
     } else {
-      $flags |= JsonLintJsonParser::DETECT_KEY_CONFLICTS;
+      $flags |= Seld\JsonLint\JsonParser::DETECT_KEY_CONFLICTS;
     }
 
     return $flags;

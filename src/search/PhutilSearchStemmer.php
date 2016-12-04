@@ -40,7 +40,7 @@ final class PhutilSearchStemmer
   }
 
   /**
-   * @phutil-external-symbol class Porter
+   * @phutil-external-symbol class CamSpiers\Porter
    */
   private function applyStemmer($normalized_token) {
     // If the token has internal punctuation, handle it literally. This
@@ -53,13 +53,11 @@ final class PhutilSearchStemmer
     static $loaded;
 
     if ($loaded === null) {
-      $root = dirname(phutil_get_library_root('phutil'));
-      require_once $root.'/externals/porter-stemmer/src/Porter.php';
+      require_once 'CamSpiers/PorterStemmer/Porter.php';
       $loaded = true;
     }
 
-
-    $stem = Porter::stem($normalized_token);
+    $stem = CamSpiers\PorterStemmer\Porter::stem($normalized_token);
 
     // If the stem is too short, it won't be a candidate for indexing. These
     // tokens are also likely to be acronyms (like "DNS") rather than real
